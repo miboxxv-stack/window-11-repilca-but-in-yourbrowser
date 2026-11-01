@@ -1,0 +1,133 @@
+* { box-sizing: border-box; }
+.win-desktop {
+  position: fixed; inset: 0; overflow: hidden; color: #f5f7fb;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(ellipse at 70% 35%, #225d91 0%, transparent 45%),
+    radial-gradient(ellipse at 30% 70%, #163d70 0%, transparent 55%),
+    linear-gradient(135deg, #07182d, #102e55 55%, #07162b);
+  user-select: none;
+}
+.desktop-icons { position: absolute; top: 16px; left: 12px; display: flex; flex-direction: column; gap: 9px; }
+.desktop-icon { width: 96px; min-height: 78px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 6px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: white; cursor: pointer; text-shadow: 0 1px 3px #000; font-size: 12px; }
+.desktop-icon:hover, .desktop-icon:focus { background: #ffffff20; border-color: #ffffff30; outline: none; }
+.desktop-icon-glyph { font-size: 30px; }
+.win-taskbar { position: absolute; bottom: 0; left: 0; right: 0; height: 54px; display: flex; align-items: center; justify-content: center; gap: 7px; background: #111b2bdb; backdrop-filter: blur(24px); border-top: 1px solid #ffffff18; z-index: 10000; }
+.task-icons { display: flex; align-items: center; gap: 5px; }
+.task-button { border: 0; border-radius: 7px; color: white; background: transparent; cursor: pointer; min-width: 42px; height: 42px; font-size: 21px; }
+.task-button:hover, .task-button.selected { background: #ffffff20; }
+.task-button.selected { border-bottom: 2px solid #60a5fa; }
+.tray { position: absolute; right: 17px; top: 0; height: 100%; display: flex; align-items: center; gap: 12px; font-size: 12px; text-align: right; }
+.clock { line-height: 1.45; }
+.start-menu { position: absolute; bottom: 64px; left: 50%; transform: translateX(-50%); width: min(590px, calc(100vw - 24px)); padding: 24px; border-radius: 12px; background: #202d40f5; border: 1px solid #ffffff24; box-shadow: 0 20px 70px #0009; backdrop-filter: blur(30px); z-index: 9999; }
+.start-search { width: 100%; padding: 12px 15px; border: 1px solid #ffffff25; border-radius: 7px; background: #101b2b; color: white; outline: none; }
+.start-menu h3 { margin: 22px 0 8px; font-size: 15px; }
+.app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+.app-item { border: 0; border-radius: 7px; padding: 13px 5px; background: transparent; color: white; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; }
+.app-item:hover { background: #ffffff18; }
+.app-item span:first-child { font-size: 28px; }
+.start-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding-top: 15px; border-top: 1px solid #ffffff25; }
+.start-footer button { border: 0; border-radius: 6px; padding: 8px 12px; color: white; background: transparent; cursor: pointer; font-size: 19px; }
+.sim-window { position: absolute; width: min(980px, calc(100vw - 24px)); height: min(650px, calc(100vh - 90px)); min-width: 320px; min-height: 230px; background: #f3f4f6; color: #172033; border-radius: 10px; overflow: hidden; box-shadow: 0 18px 65px #0009; border: 1px solid #ffffff55; display: flex; flex-direction: column; resize: both; }
+.window-title { flex: none; height: 43px; background: #202d40; color: white; display: flex; align-items: center; justify-content: space-between; padding-left: 13px; font-size: 13px; cursor: grab; touch-action: none; }
+.window-title:active { cursor: grabbing; }
+.window-heading { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.window-controls { display: flex; height: 100%; flex: none; }
+.window-controls button { width: 43px; border: 0; background: transparent; color: white; cursor: pointer; font-size: 15px; }
+.window-controls button:hover { background: #ffffff25; }
+.window-controls button:last-child:hover { background: #e81123; }
+.window-body { flex: 1; min-height: 0; overflow: auto; background: #f4f6fa; }
+.edge-app { height: 100%; min-height: 0; display: flex; flex-direction: column; background: #fff; }
+.edge-tabs { display: flex; align-items: center; height: 38px; padding: 4px 8px 0; background: #e9edf3; gap: 6px; }
+.edge-tab { width: 190px; height: 33px; padding: 8px 10px; border-radius: 8px 8px 0 0; background: white; font-size: 12px; display: flex; justify-content: space-between; }
+.edge-tab button, .new-tab { border: 0; background: transparent; cursor: pointer; }
+.new-tab { font-size: 18px; }
+.edge-toolbar { display: flex; gap: 7px; padding: 9px; background: #fff; border-bottom: 1px solid #d8dee8; }
+.edge-toolbar button { border: 0; border-radius: 7px; padding: 7px 11px; background: #eef1f5; cursor: pointer; }
+.edge-toolbar button:disabled { opacity: .35; cursor: default; }
+.edge-toolbar input { flex: 1; min-width: 0; border: 1px solid #c5ccd6; border-radius: 20px; padding: 9px 15px; outline: none; }
+.edge-toolbar input:focus { border-color: #3678d4; box-shadow: 0 0 0 2px #3678d422; }
+.edge-toolbar .go-button { background: #2563eb; color: white; }
+.edge-app iframe { border: 0; width: 100%; flex: 1; min-height: 0; background: white; }
+.edge-footnote { padding: 5px 10px; font-size: 10px; color: #667085; background: #f7f8fa; }
+.explorer-page, .settings-page { padding: 22px; color: #1d2939; }
+.explorer-toolbar { display: flex; align-items: center; gap: 15px; margin: -5px -5px 22px; padding: 10px; border-bottom: 1px solid #dce2ea; }
+.explorer-toolbar input { flex: 1; border: 1px solid #d4dbe5; border-radius: 6px; padding: 8px; }
+.file-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 22px; }
+.file-item { width: 125px; min-height: 85px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: #1d2939; cursor: pointer; }
+.file-item:hover { background: #e8eef7; border-color: #cbd7e8; }
+.file-item span:first-child { font-size: 34px; }
+.muted { color: #667085; }
+.settings-page h2 { margin-top: 0; }
+.settings-card { max-width: 650px; padding: 17px; margin: 14px 0; border: 1px solid #e0e5ec; border-radius: 9px; background: white; }
+.settings-card h3 { margin: 0 0 10px; }
+.settings-card p { margin: 7px 0; }
+.theme-preview { display: inline-block; padding: 9px 12px; border-radius: 7px; background: #102e55; color: white; }
+.notepad { width: 100%; height: 100%; border: 0; resize: none; padding: 18px; font: 15px/1.5 Consolas, monospace; outline: none; color: #172033; background: #fff; user-select: text; }
+.calculator { padding: 22px; color: #1d2939; max-width: 370px; }
+.calculator h2 { margin-top: 0; }
+.calc-display { min-height: 65px; overflow-wrap: anywhere; padding: 17px; font-size: 29px; text-align: right; background: #e2e8f0; margin-bottom: 12px; border-radius: 6px; }
+.calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.calc-grid button { padding: 16px 5px; border: 0; border-radius: 5px; background: #dce3ed; cursor: pointer; font-size: 16px; }
+.calc-grid button:hover { background: #cbd7e7; }
+.profile-page { min-height: 100%; color: #172033; background: #f4f6fa; }
+.profile-banner { height: 145px; background: linear-gradient(120deg, #0b203b, #1e5c8d 60%, #3977a8); }
+.profile-content { display: flex; gap: 22px; padding: 0 28px 28px; }
+.profile-avatar { flex: none; width: 112px; height: 112px; margin-top: -48px; border: 5px solid #f4f6fa; border-radius: 12px; display: grid; place-items: center; background: #dce5ef; font-size: 54px; overflow: hidden; }
+.profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.profile-main { flex: 1; min-width: 0; padding-top: 13px; }
+.profile-main h2 { margin: 0 0 4px; font-size: 25px; }
+.profile-handle { color: #667085; margin-top: 0; }
+.profile-main label { display: block; margin: 13px 0; font-size: 13px; font-weight: 600; }
+.profile-main input, .profile-main textarea { display: block; width: 100%; max-width: 520px; margin-top: 6px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font: inherit; font-weight: 400; }
+.profile-main textarea { min-height: 85px; resize: vertical; }
+.profile-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.profile-actions button, .profile-main button { padding: 9px 13px; border: 1px solid #cbd5e1; border-radius: 6px; background: white; color: #172033; cursor: pointer; }
+.profile-main button.primary, .profile-actions button.primary { border-color: #2563eb; background: #2563eb; color: white; }
+.profile-status { margin-top: 24px; padding-top: 14px; border-top: 1px solid #dce2ea; font-size: 13px; }
+.online-dot { display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; background: #16a34a; }
+.small { font-size: 11px; }
+.steam-shell { display: flex; min-height: 100%; color: #dce5ef; background: #17202c; font-family: "Segoe UI", Arial, sans-serif; }
+.steam-sidebar { flex: 0 0 205px; padding: 18px 12px; background: #111923; display: flex; flex-direction: column; gap: 7px; }
+.steam-brand { padding: 5px 8px 22px; font-size: 16px; color: #8eb6d9; }
+.steam-sidebar button { padding: 10px; border: 0; border-radius: 5px; color: #c9d6e2; text-align: left; background: transparent; cursor: pointer; }
+.steam-sidebar button:hover, .steam-sidebar .steam-side-active { background: #2a3b4d; color: white; }
+.steam-side-label { margin: 25px 8px 5px; color: #788b9d; font-size: 10px; letter-spacing: 1px; }
+.steam-sidebar > span { padding: 7px 10px; color: #a9b8c7; font-size: 13px; }
+.steam-sidebar small { float: right; color: #71869a; }
+.steam-main { flex: 1; min-width: 0; padding: 0 22px 24px; background: linear-gradient(145deg, #1c2a38, #17212d); }
+.steam-top { display: flex; justify-content: space-between; align-items: center; height: 52px; border-bottom: 1px solid #ffffff12; color: #91a9bd; font-size: 11px; letter-spacing: 1.5px; }
+.steam-top button { border: 1px solid #49647a; border-radius: 4px; padding: 7px 10px; color: #dce5ef; background: #263b4d; cursor: pointer; }
+.steam-welcome { display: flex; justify-content: space-between; align-items: center; padding: 24px 0 20px; }
+.steam-welcome h1 { margin: 3px 0; font-size: 30px; font-weight: 400; }
+.steam-welcome p { margin: 5px 0; color: #9aabba; font-size: 13px; }
+.steam-eyebrow { color: #6ca6cf !important; font-size: 10px !important; letter-spacing: 1.6px; }
+.steam-avatar { font-size: 47px; opacity: .8; }
+.steam-layout { display: grid; grid-template-columns: minmax(180px, 34%) 1fr; gap: 18px; min-height: 330px; }
+.steam-game-list { display: flex; flex-direction: column; gap: 4px; }
+.steam-game-row { display: flex; align-items: center; gap: 11px; width: 100%; padding: 11px; border: 1px solid transparent; border-radius: 5px; text-align: left; color: #c8d4df; background: #202e3c; cursor: pointer; }
+.steam-game-row:hover, .steam-game-row.chosen { background: #30485d; border-color: #50718d; color: white; }
+.steam-game-row > span:first-child { font-size: 25px; }
+.steam-game-row b, .steam-game-row small { display: block; }
+.steam-game-row b { font-size: 13px; }
+.steam-game-row small { margin-top: 3px; color: #91a5b7; font-size: 10px; }
+.steam-detail { min-width: 0; padding: 18px; background: #1e2b38; border-radius: 6px; }
+.game-art { display: grid; place-items: center; height: 125px; margin-bottom: 17px; border-radius: 5px; background: linear-gradient(120deg, #1b3b57, #3c6380); font-size: 65px; }
+.steam-detail h2 { margin: 5px 0 10px; font-weight: 400; }
+.steam-detail p { color: #a9b8c7; font-size: 13px; line-height: 1.55; }
+.game-status { margin: 17px 0; color: #8da5b9; font-size: 11px; }
+.launch-placeholder { padding: 10px 18px; border: 0; border-radius: 4px; color: white; background: #4c8c43; cursor: pointer; }
+.steam-empty { display: grid; place-content: center; height: 100%; text-align: center; color: #90a3b4; }
+.steam-empty span { font-size: 42px; }
+.steam-empty h2 { color: #dce5ef; }
+@media (max-width: 650px) {
+  .tray { right: 7px; font-size: 10px; gap: 5px; }
+  .task-icons { margin-right: 90px; }
+  .app-grid { grid-template-columns: repeat(3, 1fr); }
+  .start-menu { padding: 15px; }
+  .sim-window { left: 8px !important; top: 8px !important; width: calc(100vw - 16px) !important; height: calc(100vh - 70px) !important; }
+  .steam-sidebar { flex-basis: 125px; }
+  .steam-main { padding: 0 12px 18px; }
+  .steam-layout { grid-template-columns: 1fr; }
+  .profile-content { padding: 0 14px 20px; gap: 12px; flex-direction: column; }
+  .profile-avatar { margin-top: -42px; }
+}
